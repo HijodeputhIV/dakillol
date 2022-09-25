@@ -31,6 +31,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    # https://stackoverflow.com/questions/68872388/laravel-and-docker-permission-issue-cant-save-files
+    user: "1000:1000"
     container_name: php-fpm
     volumes:
       - ../:/var/www/html

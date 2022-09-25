@@ -17,7 +17,3 @@ fi
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# File permissions
-RUN chown -R www-data:www-data /var/www
-RUN chmod 755 /var/www
