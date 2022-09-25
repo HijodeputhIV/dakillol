@@ -1,10 +1,12 @@
+docker_compose_context = --file docker/docker-compose.yml --env-file ./.env
+
 .PHONY: containers-up
 containers-up:
-	@sudo docker-compose --file docker/docker-compose.yml --env-file ./.env up -d
+	@sudo docker-compose $(docker_compose_context) up -d
 
 .PHONY: containers-down containers-clean
 containers-down:
-	@sudo docker-compose --file docker/docker-compose.yml --env-file ./.env down
+	@sudo docker-compose $(docker_compose_context) down
 containers-clear: containers-down
 	@sudo docker system prune -a
 
@@ -14,4 +16,4 @@ containers-list:
 
 .PHONY: composer-install
 composer-install:
-	@sudo docker-compose exec php-fpm composer install --ignore-platform-reqs
+	@sudo docker-compose $(docker_compose_context) exec php-fpm composer install --ignore-platform-reqs
