@@ -17,3 +17,7 @@ containers-list:
 .PHONY: composer-install
 composer-install:
 	@sudo docker-compose $(docker_compose_context) exec php-fpm composer install --ignore-platform-reqs
+
+.PHONY: artisan
+artisan:
+	@sudo docker-compose $(docker_compose_context) exec php-fpm php artisan $(cmd)
