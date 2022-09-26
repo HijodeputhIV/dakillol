@@ -21,3 +21,7 @@ composer-install:
 .PHONY: artisan
 artisan:
 	@sudo docker-compose $(docker_compose_context) exec php-fpm php artisan $(cmd)
+
+.PHONY: application-install
+application-install: containers-up composer-install
+	@make artisan cmd=key:generate
